@@ -21,29 +21,51 @@
                         </div>
                         <div class="col-6">
                             <label for="fb">Facebook Link</label>
-                            <input type="text" name="fb" id="fb" class="form-control mb-2" autocomplete="off" placeholder="https://fb.com/profilemu">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">https://</div>
+                                </div>
+                                <input type="text" name="fb" id="fb" class="form-control mb-2" autocomplete="off" placeholder="fb.com/profilemu">
+                            </div>
                         </div>
                         <div class="col-6">
                             <label for="ig">Instagram Link</label>
-                            <input type="text" name="ig" id="ig" class="form-control mb-2" autocomplete="off" placeholder="https:://instagram.com/profilemu">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text">https://</div>
+                                </div>
+                                <input type="text" name="ig" id="ig" class="form-control mb-2" autocomplete="off" placeholder="instagram.com/profilemu">
+                            </div>
                         </div>
                         <div class="col-6">
                             <label for="yt">Youtube Link</label>
-                            <input type="text" name="yt" id="yt" class="form-control mb-2" autocomplete="off" placeholder="https:://youtube.com/p/profilemu">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text">https://</div>
+                                </div>
+                                <input type="text" name="yt" id="yt" class="form-control mb-2" autocomplete="off" placeholder="youtube.com/p/profilemu">
+                            </div>
                         </div>
                         <div class="col-6">
                             <label for="linkedin">Linkedin</label>
-                            <input type="text" name="linkedin" id="linkedin" class="form-control mb-2" autocomplete="off" required placeholder="https:://linkedin.com/profilemu">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text">https://</div>
+                                </div>
+                                <input type="text" name="linkedin" id="linkedin" class="form-control mb-2" autocomplete="off" required placeholder="linkedin.com/profilemu">
+                            </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12">
                             <label for="whatsapp">Whatsapp</label>
-                            <input type="text" name="whatsapp" id="whatsapp" class="form-control mb-2" autocomplete="off" required placeholder="+628****">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text">+62</div>
+                                </div>
+                                <input type="text" name="whatsapp" id="whatsapp" class="form-control mb-2" autocomplete="off" required placeholder="8xxxxxxx">
+                            </div>
                         </div>
                         <div class="col-12 mb-2">
                             <button type="submit" id="submit" class="btn btn-primary btn-block">Update Profile</button>
-                        </div>
-                        <div class="col-12">
-                            <button type="button" id="cancel" class="btn btn-block">Cancel</button>
                         </div>
                     </div>
                 </form>

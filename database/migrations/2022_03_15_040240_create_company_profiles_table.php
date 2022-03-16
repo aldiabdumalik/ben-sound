@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('company_profiles', function (Blueprint $table) {
             $table->id();
             $table->string('name')->default('Ben & Sound');
+            $table->string('icon')->default('default.png');
             $table->string('logo')->default('default.png');
             $table->text('address')->nullable();
             $table->string('facebook')->nullable();
