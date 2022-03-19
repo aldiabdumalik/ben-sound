@@ -3,7 +3,7 @@
 
         <div class="brand_logo mb-50 clearfix">
             <a href="index.html" class="brand_link">
-                <img src="{{ asset('web/images/logo/logo_2.png') }}" alt="logo_not_found">
+                <img src="{{ asset('files/logo/'.$comprof->logo) }}" alt="logo_not_found">
             </a>
             <span class="close_btn"><i class="fal fa-times"></i></span>
         </div>
@@ -22,18 +22,19 @@
         <div class="contact_info ul_li_block mb-50">
             <h3 class="item_title">Contact Us</h3>
             <ul class="clearfix">
-                <li><a href="#!"><span>Email:</span> makro@gmail.com</a></li>
-                <li><a href="#!"><span>Phone:</span> +948 256 347 968</a></li>
+                @foreach ($contact as $cont)
+                <li><a href="javascript:void(0)"><span>{{$cont->name}}:</span>{{$cont->value}}</a></li>
+                @endforeach
             </ul>
         </div>
 
         <div class="social_links ul_li mb-50">
             <h3 class="item_title">Follow Us</h3>
             <ul class="clearfix">
-                <li><a href="#!"><i class="icon-facebook"></i></a></li>
-                <li><a href="#!"><i class="icon-twitter"></i></a></li>
-                <li><a href="#!"><i class="icon-vimeo"></i></a></li>
-                <li><a href="#!"><i class="icon-linkedin"></i></a></li>
+                <li><a href="https://{{ $comprof->facebook }}"><i class="icon-facebook"></i></a></li>
+                <li><a href="https://{{ $comprof->linkedin }}"><i class="icon-linkedin"></i></a></li>
+                <li><a href="https://{{ $comprof->youtube }}"><i class="fab fa-youtube"></i></a></li>
+                <li><a href="https://{{ $comprof->instagram }}"><i class="fab fa-instagram"></i></a></li>
             </ul>
         </div>
 

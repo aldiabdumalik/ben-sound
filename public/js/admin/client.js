@@ -2,33 +2,36 @@ import * as module from './module.js';
 
 $(document).ready(function() {
     const resetForm = () => {
-        $('#form-contact').trigger('reset')
+        $('#form-client').trigger('reset')
         $('#submit').text('Save')
         $('#id').val(0)
+        $('#image').val(null)
+        $('#image').attr('required');
+        $('#image-text').text('Choose file')
         module.isHidden('#delete', true)
-        $('#form-contact select, button[type="submit"], input[name=date]').prop('disabled', false);
-        $('#form-contact input').not('input[type=hidden]').prop('readonly', false);
+        $('#form-client select, button[type="submit"], input[name=date]').prop('disabled', false);
+        $('#form-client input').not('input[type=hidden]').prop('readonly', false);
     }
 
-    const dt = $('#table-contact').DataTable({
+    const dt = $('#table-client').DataTable({
         processing: true,
         serverSide: true,
         destroy: true,
         lengthChange: false,
         ajax: {
             method: "POST",
-            url: module.base_url + 'company/contact/dt',
+            url: module.base_url + 'company/client/dt',
             headers: {'X-CSRF-TOKEN': module.header_token},
         },
         columns: [
             { title: 'No.', data: 'DT_RowIndex', name: 'DT_RowIndex' },
-            { title: 'Type', data: 'name', name: 'name' },
-            { title: 'Contact', data: 'value', name: 'value' }
+            { title: 'Client Name', data: 'client_name', name: 'client_name' },
+            { title: 'Logo', data: 'image', name: 'image' }
         ],
     });
 
     let touchtime = 0;
-    $('#table-contact tbody').on('click', 'tr', function () {
+    $('#table-client tbody').on('click', 'tr', function () {
         if (touchtime == 0) {
             touchtime = new Date().getTime();
         } else {
@@ -39,8 +42,9 @@ $(document).ready(function() {
                     module.isHidden('#delete', false)
 
                     $('#id').val(data.id);
-                    $('#name').val(data.name);
-                    $('#value').val(data.value);
+                    $('#name').val(data.client_name);
+                    $('#image-text').text(data.image);
+                    $('#image').removeAttr('required');
 
                     $('#submit').text('Update');
 
@@ -52,25 +56,43 @@ $(document).ready(function() {
         }
     });
 
-    $('#form-contact').submit(function (event) {
+    $('#image').on('change', function(e){
+        e.preventDefault();
+        var fileName = $(this).val().replace('C:\\fakepath\\', " ");
+        var ext = fileName.lastIndexOf(".") + 1;
+        var extFile = fileName.substr(ext, fileName.length).toLowerCase();
+        if (!fileName) {
+            fileName = 'Choose file';
+        }
+        if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
+            $(this).next('#image-text').html(fileName);
+        }else{
+            $(this).next('#image-text').html('Choose file');
+            $(this).val(null);
+        }
+    });
+
+    $('#form-client').submit(function (event) {
         event.preventDefault();
         module.loading_start();
 
-        let url = module.base_url + 'company/contact/' + $('#id').val() + '/detail',
+        let url = module.base_url + 'company/client/' + $('#id').val() + '/detail',
             method = "GET",
-            data = {
-                name: $('#name').val(),
-                value: $('#value').val()
-            }
+            formData = new FormData();
+        if ($("#image")[0].files.length > 0) {
+            formData.append('image', $("#image")[0].files[0])
+        }
+        formData.append('client_name', $("#name").val())
         module.callAjax(url, method).then(response => {
             if (parseInt(response.message) == 1) {
-                method = "PUT"
-                url = module.base_url + `company/contact/${$('#id').val()}/update`
+                method = "POST"
+                url = module.base_url + `company/client/update`
+                formData.append('id', $("#id").val())
             }else{
                 method = "POST"
-                url = module.base_url + `company/contact/save`
+                url = module.base_url + `company/client/save`
             }
-            module.callAjax(url, method, data).then(response => {
+            module.callAjaxFormData(url, method, formData).then(response => {
                 module.loading_stop();
                 resetForm();
                 dt.ajax.reload();
@@ -89,7 +111,7 @@ $(document).ready(function() {
     $('#delete').click(function() {
         swal({
             title: 'Are you sure?',
-            text: "This contact will be deleted permanently!",
+            text: "This client will be deleted permanently!",
             icon: 'warning',
             dangerMode: true,
             buttons: {
@@ -105,7 +127,7 @@ $(document).ready(function() {
         }).then((answers) => {
             if (answers == true) {
                 module.loading_start();
-                let url = module.base_url + 'company/contact/' + $('#id').val() + '/delete',
+                let url = module.base_url + 'company/client/' + $('#id').val() + '/delete',
                     method = "DELETE"
                 module.callAjax(url, method).then(response => {
                     module.loading_stop();

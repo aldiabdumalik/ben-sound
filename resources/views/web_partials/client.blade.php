@@ -11,7 +11,14 @@
         </div>
 
         <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="300">
+            @foreach ($client as $cli)
             <div class="partner_logo col-lg-2">
+                <a href="#{{ $cli->client_name }}">
+                    <img src="{{ asset('files/client/' . $cli->image) }}" alt="logo_not_found">
+                </a>
+            </div>    
+            @endforeach
+            {{-- <div class="partner_logo col-lg-2">
                 <a href="#!">
                     <img src="{{ asset('web/images/partners/img_1.png') }}" alt="logo_not_found">
                 </a>
@@ -63,7 +70,7 @@
                 <a href="#!">
                     <img src="{{ asset('web/images/partners/img_9.png') }}" alt="logo_not_found">
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 

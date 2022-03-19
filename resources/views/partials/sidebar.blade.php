@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-        <a href="javascript:void(0)">{{ config('app.name', 'Laravel') }}</a>
+        <a href="javascript:void(0)">{{ $comprof->name }}</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
         <a href="javascript:void(0)">St</a>
@@ -26,16 +26,28 @@
             @endrole
 
             @role('admin')
-            <li class="dropdown">
+            @php
+                $arr = [
+                    'admin.company',
+                    'admin.company.contact',
+                    'admin.company.banner',
+                    'admin.company.about',
+                    'admin.company.client',
+                    'admin.company.message',
+                    'admin.company.review',
+                ];
+                
+            @endphp
+            <li class="dropdown {{ (in_array(request()->route()->getName(), $arr)) ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-desktop"></i> <span>Website</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('admin.company') }}">Company Profile</a></li>
-                    <li><a class="nav-link" href="#">Company Contact</a></li>
-                    <li><a class="nav-link" href="#">Banner</a></li>
-                    <li><a class="nav-link" href="#">About</a></li>
-                    <li><a class="nav-link" href="#">Client</a></li>
-                    <li><a class="nav-link" href="#">Contact Message</a></li>
-                    <li><a class="nav-link" href="#">Review</a></li>
+                    <li class="{{ request()->route()->getName() === 'admin.company' ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.company') }}">Company Profile</a></li>
+                    <li class="{{ request()->route()->getName() === 'admin.company.contact' ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.company.contact') }}">Company Contact</a></li>
+                    <li class="{{ request()->route()->getName() === 'admin.company.banner' ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.company.banner') }}">Banner</a></li>
+                    <li class="{{ request()->route()->getName() === 'admin.company.about' ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.company.about') }}">About</a></li>
+                    <li class="{{ request()->route()->getName() === 'admin.company.client' ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.company.client') }}">Client</a></li>
+                    <li class="{{ request()->route()->getName() === 'admin.company.message' ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.company.message') }}">Contact Message</a></li>
+                    <li class="{{ request()->route()->getName() === 'admin.company.review' ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.company.review') }}">Review</a></li>
                 </ul>
             </li>
             @endrole

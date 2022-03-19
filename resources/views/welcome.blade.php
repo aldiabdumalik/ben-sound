@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Ben & Sound</title>
-    <link rel="shortcut icon" href="{{ asset('web/images/logo/favourite_icon_1.png') }}">
+    <title>{{ $comprof->name }}</title>
+    <link rel="shortcut icon" href="{{ asset('files/logo/'.$comprof->logo) }}">
 
     <!-- css include -->
     <link rel="stylesheet" type="text/css" href="{{ asset('web/css/bootstrap.min.css') }}">
@@ -28,6 +28,8 @@
     <!-- magnific popup - css include -->
     <link rel="stylesheet" type="text/css" href="{{ asset('web/css/magnific-popup.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('admin/modules/jquery-toastr/jquery.toast.min.css') }}">
+
     <!-- custom - css include -->
     <link rel="stylesheet" type="text/css" href="{{ asset('web/css/style.css') }}">
 </head>
@@ -45,24 +47,7 @@
         @include('web_partials.header_desktop')
         @include('web_partials.mobile')
 
-        <main>
-            @include('web_partials.banner')
-
-            <section class="feature_section sec_ptb_120 deco_wrap clearfix">
-                <div class="container">
-                    @include('web_partials.about')
-                </div>
-            </section>
-            
-            <div class="container" data-aos="fade-up" data-aos-delay="300">
-                <hr class="m-0">
-            </div>
-            
-            @include('web_partials.client')
-
-            @include('web_partials.contact')
-
-        </main>
+        @yield('content')
 
         @include('web_partials.footer')
     </div>
@@ -81,6 +66,7 @@
 
     <!-- magnific popup - jquery include -->
     <script src="{{ asset('web/js/magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('admin/modules/jquery-toastr/jquery.toast.min.js') }}"></script>
 
     <!-- isotope filter - jquery include -->
     <script src="{{ asset('web/js/isotope.pkgd.min.js') }}"></script>
@@ -100,5 +86,6 @@
 
     <!-- custom - jquery include -->
     <script src="{{ asset('web/js/custom.js') }}"></script>
+    @stack('page-js')
 </body>
 </html>

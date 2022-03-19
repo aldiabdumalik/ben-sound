@@ -1,26 +1,35 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\CompanyAbout;
-use App\Models\CompanyBanner;
-use App\Models\CompanyClient;
-use App\Models\Contact;
+use App\Http\Controllers\Controller;
 use App\Models\ContactMessage;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
-class WebsiteController extends Controller
+class WebContactController extends Controller
 {
     public function index()
     {
-        $banner = CompanyBanner::find(1);
-        $about = CompanyAbout::find(1);
-        $client = CompanyClient::all();
-        $contact = Contact::all();
-        return view('website.home', compact('banner', 'about', 'client', 'contact'));
+        return view('pages.contact.index');
     }
 
-    public function sendMessage(Request $request)
+    public function dt(Request $request)
+    {
+        $model = ContactMessage::query()->get();
+        return DataTables::of($model)
+            ->addIndexColumn()
+            ->make(true);
+    }
+
+    public function detail($id)
+    {
+        $model = ContactMessage::find($id);
+
+        return thisSuccess(1, $model);
+    }
+
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',

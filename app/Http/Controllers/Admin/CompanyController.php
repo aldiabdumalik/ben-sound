@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CompanyProfile;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class CompanyController extends Controller
 {
@@ -27,7 +28,7 @@ class CompanyController extends Controller
             'name' => 'required',
             'address' => 'required',
             'logo' => 'image|mimes:jpeg,png,jpg|max:5000',
-            'icon' => 'image|mimes:jpeg,png,jpg|max:5000',
+            'icon' => 'image|mimes:jpeg,png,jpg,ico|max:5000',
         ]);
 
         $model = CompanyProfile::find(1);
@@ -48,15 +49,38 @@ class CompanyController extends Controller
 
         $model->name = $request->name;
         $model->address = $request->address;
-        $model->facebook = $request->facebook;
-        $model->instagram = $request->instagram;
-        $model->lingkedin = $request->lingkedin;
-        $model->youtube = $request->youtube;
+        $model->facebook = $request->fb;
+        $model->instagram = $request->ig;
+        $model->linkedin = $request->linkedin;
+        $model->youtube = $request->yt;
         $model->whatsapp = $request->whatsapp;
 
         $model->save();
 
         return thisSuccess('Data updated successfully');
+    }
+
+    public function indexContact()
+    {
+        return view('pages.company.contact');
+    }
+
+    public function detailContact($id)
+    {
+        $model = Contact::find($id);
+        if ($model) {
+            return thisSuccess(1, $model);
+        }
+
+        return thisSuccess('Not Found');
+    }
+
+    public function dt(Request $request)
+    {
+        $model = Contact::query()->get();
+        return DataTables::of($model)
+            ->addIndexColumn()
+            ->make(true);
     }
 
     public function store(Request $request)

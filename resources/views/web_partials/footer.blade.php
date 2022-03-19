@@ -13,8 +13,9 @@
                         </div>
                         <div class="contact_info ul_li_block mb-30">
                             <ul class="clearfix">
-                                <li>Email: <a href="#!">makro@gmail.com</a></li>
-                                <li>Phone: <a href="#!">+948 256 347 968</a></li>
+                                @foreach ($contact as $cont)
+                                <li>{{$cont->name}}: <a href="javascript:void(0)">{{$cont->value}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="form_item mb-0"></div>
@@ -47,11 +48,11 @@
                     <div class="widget useful_links ul_li_block">
                         <h3 class="widget_title mb-50">Social Media</h3>
                         <ul class="clearfix">
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">LinkedIn</a></li>
-                            <li><a href="#">Youtube</a></li>
-                            <li><a href="#">Whatsapp</a></li>
+                            <li><a href="https://{{ $comprof->facebook }}"><i class="icon-facebook"></i> Facebook</a></li>
+                            <li><a href="https://{{ $comprof->linkedin }}"><i class="icon-linkedin"></i> Linkedin</a></li>
+                            <li><a href="https://{{ $comprof->youtube }}"><i class="fab fa-youtube"></i> Youtube</a></li>
+                            <li><a href="https://{{ $comprof->instagram }}"><i class="fab fa-instagram"></i> Instagram</a></li>
+                            <li><a href="https://wa.me/62{{ $comprof->whatsapp }}"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,32 +75,7 @@
 
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="social_icon ul_li_center">
-                        <ul class="clearfix">
-                            <li>
-                                <a href="#!">
-                                    <i class="icon-facebook"></i>
-                                    <i class="icon-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!">
-                                    <i class="icon-twitter"></i>
-                                    <i class="icon-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!">
-                                    <i class="icon-vimeo"></i>
-                                    <i class="icon-vimeo"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!">
-                                    <i class="icon-linkedin"></i>
-                                    <i class="icon-linkedin"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <ul class="clearfix"></ul>
                     </div>
                 </div>
 

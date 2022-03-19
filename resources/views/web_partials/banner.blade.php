@@ -8,7 +8,7 @@
                     <div class="big_image">
                         <div class="layer" data-depth="0.1">
                             <div data-aos="fade-up" data-aos-delay="500">
-                                <img src="{{ asset('web/images/banner/01_agency/img_1.png') }}" alt="image_not_found" data-parallax='{"y" : 30}'>
+                                <img src="{{ asset('files/banner/'. $banner->img) }}" alt="image_not_found" data-parallax='{"y" : 30}'>
                             </div>
                         </div>
                     </div>
@@ -32,17 +32,14 @@
             <div class="col-lg-5 col-md-6 col-sm-8">
                 <div class="banner_content">
                     <h1 class="title_text mb-30 text_effect_wrap clearfix">
-                        <span class="text_effect text_effect_left">We build and transform</span>
-                        <span class="text_effect text_effect_left">businesse strategy</span>
+                        <span class="text_effect text_effect_left">{{$banner->title}}</span>
                     </h1>
-                    <p class="mb-50" data-aos="fade-up" data-aos-delay="200">
-                        Faff about only a quid blower I don't want no agro bleeding chim pot burke tosser cras nice one boot fanny.
-                    </p>
+                    <p class="mb-50" data-aos="fade-up" data-aos-delay="200">{{$banner->desc}}</p>
                     <div class="btns_group ul_li" data-aos="fade-up" data-aos-delay="300">
                         <ul class="clearfix">
-                            <li><a href="sign_up.html" class="btn btn_border">Get Started</a></li>
+                            <li><a href="#" class="btn btn_border">View Schedule</a></li>
                             <li>
-                                <a class="popup_video" href="https://www.youtube.com/watch?v=JOq6Q-YAg4s">
+                                <a class="popup_video" href="https:://{{$banner->yt_link}}">
                                     <span class="icon"><i class="icon-play"></i></span>
                                     <small>Watch Video</small>
                                 </a>

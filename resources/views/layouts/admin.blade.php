@@ -9,6 +9,8 @@
     
     <link rel="stylesheet" href="{{ asset('admin/modules/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('admin/modules/fontawesome/css/all.min.css')}}">
+    <!-- Page Specific JS File -->
+    @stack('page-css')
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('admin/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/modules/datatables/datatables.min.css') }}">

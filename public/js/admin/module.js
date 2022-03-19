@@ -60,3 +60,29 @@ export function callAjax(url, method, data=null) {
         });
     });
 }
+export function callAjaxFormData(url, method, formData) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: url,
+            method: method,
+            data: formData,
+            dataType: false,
+            contentType: false,
+            cache: false,
+            processData: false,
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            error: function(xhr, status, x){
+                loading_stop();
+                send_notif({
+                    icon: 'error',
+                    message: xhr.responseJSON.message
+                });
+                console.clear();
+                    reject(xhr);
+            },
+            complete: function (response){
+                resolve(response);
+            }
+        });
+    });
+}

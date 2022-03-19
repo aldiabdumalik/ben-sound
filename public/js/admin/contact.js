@@ -9,7 +9,7 @@ $(document).ready(function() {
         lengthChange: false,
         ajax: {
             method: "POST",
-            url: module.base_url + 'contact/dt',
+            url: module.base_url + 'company/message/dt',
             headers: {'X-CSRF-TOKEN': module.header_token},
         },
         columns: [
