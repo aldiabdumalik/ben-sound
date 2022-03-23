@@ -17,17 +17,17 @@
             <div class="col-lg-8 col-md-12">
                 <nav class="main_menu ul_li_center clearfix">
                     <ul class="clearfix">
-                        <li class="active menu_item_has_child">
-                            <a href="#!">Home</a>
+                        <li class="menu_item_has_child">
+                            <a href="{{ request()->route()->getName() !== 'web' ? '/' : '#' }}">Home</a>
                         </li>
                         <li class="menu_item_has_child">
-                            <a href="#about">About</a>
+                            <a href="{{ request()->route()->getName() !== 'web' ? '/#about' : '#about' }}">About</a>
                         </li>
                         <li class="menu_item_has_child">
-                            <a href="#our-client">Our Client</a>
+                            <a href="{{ request()->route()->getName() !== 'web' ? '/#our-client' : '#our-client' }}">Our Client</a>
                         </li>
                         <li class="menu_item_has_child">
-                            <a href="#contact">Contact</a>
+                            <a href="{{ request()->route()->getName() !== 'web' ? '/#contact' : '#contact' }}">Contact</a>
                         </li>
                         <li class="menu_item_has_child">
                             <a href="#riview">Riview</a>
@@ -37,7 +37,7 @@
             </div>
 
             <div class="col-lg-2 col-md-12">
-                <a href="#" class="btn bg_white float-right">Tracking</a>
+                <a href="{{ route('web.tracking') }}" class="btn bg_white float-right">Tracking</a>
             </div>
         </div>
     </div>

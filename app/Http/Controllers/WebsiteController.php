@@ -7,7 +7,10 @@ use App\Models\CompanyBanner;
 use App\Models\CompanyClient;
 use App\Models\Contact;
 use App\Models\ContactMessage;
+use App\Models\Schedule;
+use App\Models\Track;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WebsiteController extends Controller
 {
@@ -18,6 +21,44 @@ class WebsiteController extends Controller
         $client = CompanyClient::all();
         $contact = Contact::all();
         return view('website.home', compact('banner', 'about', 'client', 'contact'));
+    }
+
+    public function indexTracking()
+    {
+        $contact = Contact::all();
+        $schedules = Schedule::month(date('m'))->orderBy('schedule_start', 'DESC')->get();
+        $count = (empty($schedules)) ? 0 : count($schedules);
+        return view('website.tracking', compact('contact', 'schedules', 'count'));
+    }
+
+    public function ajaxSchedule($bln)
+    {
+        $model = Schedule::month($bln)->orderBy('schedule_start', 'DESC')->get();
+
+        if ($model->isEmpty()) {
+            $result = [
+                'bulan' => monthName($bln),
+                'data' => 0
+            ];
+            return thisSuccess('Schedule on this month not found', $result);
+        }
+
+        $result = [
+            'bulan' => monthName($bln),
+            'data' => $model,
+            'count' => count($model)
+        ];
+
+        return thisSuccess('OK', $result);
+    }
+
+    public function ajaxTracking($schedule_id)
+    {
+        $model = Track::where('schedule_id', $schedule_id)
+        ->orderBy('created_at', 'ASC')
+        ->get();
+
+        return thisSuccess('OK', $model);
     }
 
     public function sendMessage(Request $request)
@@ -37,5 +78,25 @@ class WebsiteController extends Controller
         ]);
 
         return thisSuccess('Your message has been send!');
+    }
+
+    static function scheduleWithLastTracking($month)
+    {
+        $db = DB::table('schedules as sch')
+        ->leftJoin(DB::raw('
+            (
+                SELECT status AS last_status, schedule_id
+                FROM tracks
+                ORDER BY created_at DESC
+                LIMIT 1
+            ) as track
+        '), function($join){
+            $join->on("track.schedule_id", "=", "sch.id");
+        })
+        ->where(function ($on) use($month){
+            $on->whereRaw('MONTH(sch.schedule_start) = ? AND YEAR(sch.schedule_start) = ?', [$month, date('Y')]);
+        })
+        ->get();
+        return $db;
     }
 }

@@ -10,12 +10,12 @@
 
         <div id="menu_list" class="menu_list ul_li_block mp_balancing mb-50 clearfix">
             <ul class="clearfix">
-                <li><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#our-client">Our Client</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="{{ request()->route()->getName() !== 'web' ? '/' : '#' }}">Home</a></li>
+                <li><a href="{{ request()->route()->getName() !== 'web' ? '/#about' : '#about' }}">About</a></li>
+                <li><a href="{{ request()->route()->getName() !== 'web' ? '/#our-client' : '#our-client' }}">Our Client</a></li>
+                <li><a href="{{ request()->route()->getName() !== 'web' ? '/#contact' : '#contact' }}">Contact</a></li>
                 <li><a href="#riview">Riview</a></li>
-                <li><a href="#Tracking">Tracking</a></li>
+                <li><a href="{{ route('web.tracking') }}">Tracking</a></li>
             </ul>
         </div>
 

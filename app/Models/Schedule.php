@@ -27,4 +27,9 @@ class Schedule extends Model
              $schedule->track()->delete();
         });
     }
+
+    public function scopeMonth($query, $month)
+    {
+        return $query->whereRaw('MONTH(schedule_start) = ? AND YEAR(schedule_start) = ?', [$month, date('Y')]);
+    }
 }

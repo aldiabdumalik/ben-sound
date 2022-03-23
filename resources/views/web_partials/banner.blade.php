@@ -37,7 +37,7 @@
                     <p class="mb-50" data-aos="fade-up" data-aos-delay="200">{{$banner->desc}}</p>
                     <div class="btns_group ul_li" data-aos="fade-up" data-aos-delay="300">
                         <ul class="clearfix">
-                            <li><a href="#" class="btn btn_border">View Schedule</a></li>
+                            <li><a href="{{ route('web.tracking') }}" class="btn btn_border">View Schedule</a></li>
                             <li>
                                 <a class="popup_video" href="https:://{{$banner->yt_link}}">
                                     <span class="icon"><i class="icon-play"></i></span>

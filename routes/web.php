@@ -31,6 +31,9 @@ Route::group(['middleware' => 'website_config'], function (){
     Route::controller(WebsiteController::class)->group(function (){
         Route::get('/', 'index')->name('web');
         Route::get('/index.html', 'index')->name('web.index');
+        Route::get('/tracking.html', 'indexTracking')->name('web.tracking');
+        Route::get('/action/{bln}/schedule.json', 'ajaxSchedule')->name('web.schedule');
+        Route::get('/action/{schedule_id}/track.json', 'ajaxTracking')->name('web.track.action');
         Route::post('/action/send-message', 'sendMessage')->name('web.send_message');
     });
     Auth::routes();
