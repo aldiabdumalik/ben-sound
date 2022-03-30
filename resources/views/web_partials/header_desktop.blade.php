@@ -30,7 +30,7 @@
                             <a href="{{ request()->route()->getName() !== 'web' ? '/#contact' : '#contact' }}">Contact</a>
                         </li>
                         <li class="menu_item_has_child">
-                            <a href="#riview">Riview</a>
+                            <a href="{{ route('web.review') }}">Review</a>
                         </li>
                     </ul>
                 </nav>

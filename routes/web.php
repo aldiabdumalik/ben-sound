@@ -4,12 +4,14 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\TrackingController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WebAboutController;
 use App\Http\Controllers\Admin\WebBannerController;
 use App\Http\Controllers\Admin\WebClientController;
 use App\Http\Controllers\Admin\WebContactController;
 use App\Http\Controllers\Admin\WebReviewController;
 use App\Http\Controllers\WebsiteController;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +34,7 @@ Route::group(['middleware' => 'website_config'], function (){
         Route::get('/', 'index')->name('web');
         Route::get('/index.html', 'index')->name('web.index');
         Route::get('/tracking.html', 'indexTracking')->name('web.tracking');
+        Route::get('/review.html', 'indexReview')->name('web.review');
         Route::get('/action/{bln}/schedule.json', 'ajaxSchedule')->name('web.schedule');
         Route::get('/action/{schedule_id}/track.json', 'ajaxTracking')->name('web.track.action');
         Route::post('/action/send-message', 'sendMessage')->name('web.send_message');
@@ -95,6 +98,15 @@ Route::group(['middleware' => 'website_config'], function (){
         });
         Route::controller(WebReviewController::class)->group(function (){
             Route::get('/company/review', 'index')->name('admin.company.review');
+        });
+
+        Route::controller(UserController::class)->group(function (){
+            Route::get('/user', 'index')->name('admin.user');
+            Route::get('/user/{id}/detail', 'detail')->name('admin.user.detail');
+            Route::post('/user/dt', 'dt')->name('admin.user.dt');
+            Route::post('/user/save', 'store')->name('admin.user.store');
+            Route::put('/user/{id}/update', 'update')->name('admin.user.update');
+            Route::delete('/user/{id}/delete', 'destroy')->name('admin.user.destroy');
         });
     });
 });

@@ -18,6 +18,9 @@ class WebContactController extends Controller
     {
         $model = ContactMessage::query()->get();
         return DataTables::of($model)
+            ->addColumn('date', function ($model){
+                return date('d/m/Y', strtotime($model->created_at));
+            })
             ->addIndexColumn()
             ->make(true);
     }

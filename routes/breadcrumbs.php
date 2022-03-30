@@ -10,6 +10,10 @@ Breadcrumbs::for('admin.schedule', function (BreadcrumbTrail $trail) {
     $trail->push('Schedule', route('admin.schedule'));
 });
 
+Breadcrumbs::for('admin.user', function (BreadcrumbTrail $trail) {
+    $trail->push('User', route('admin.user'));
+});
+
 Breadcrumbs::for('admin.track', function (BreadcrumbTrail $trail) {
     $trail->push('Tracking', route('admin.track'));
 });

@@ -136,4 +136,8 @@ $(document).ready(function() {
             }
         });
     })
+
+    $('#add-review').click(function () {
+        $('#modal-review').modal('show')
+    })
 });

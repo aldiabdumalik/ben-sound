@@ -14,7 +14,7 @@
                 <li><a href="{{ request()->route()->getName() !== 'web' ? '/#about' : '#about' }}">About</a></li>
                 <li><a href="{{ request()->route()->getName() !== 'web' ? '/#our-client' : '#our-client' }}">Our Client</a></li>
                 <li><a href="{{ request()->route()->getName() !== 'web' ? '/#contact' : '#contact' }}">Contact</a></li>
-                <li><a href="#riview">Riview</a></li>
+                <li><a href="{{ route('web.review') }}">Review</a></li>
                 <li><a href="{{ route('web.tracking') }}">Tracking</a></li>
             </ul>
         </div>

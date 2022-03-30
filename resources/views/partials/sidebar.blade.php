@@ -26,6 +26,12 @@
             @endrole
 
             @role('admin')
+            <li class="{{ request()->route()->getName() === 'admin.user' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.user') }}"><i class="far fa-user"></i> <span>User</span></a>
+            </li>
+            @endrole
+
+            @role('admin')
             @php
                 $arr = [
                     'admin.company',

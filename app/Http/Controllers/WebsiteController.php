@@ -30,6 +30,13 @@ class WebsiteController extends Controller
         $count = (empty($schedules)) ? 0 : count($schedules);
         return view('website.tracking', compact('contact', 'schedules', 'count'));
     }
+    public function indexReview()
+    {
+        $contact = Contact::all();
+        $schedules = Schedule::month(date('m'))->orderBy('schedule_start', 'DESC')->get();
+        $count = (empty($schedules)) ? 0 : count($schedules);
+        return view('website.review', compact('contact', 'schedules', 'count'));
+    }
 
     public function ajaxSchedule($bln)
     {
