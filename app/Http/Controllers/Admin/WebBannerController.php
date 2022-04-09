@@ -33,8 +33,7 @@ class WebBannerController extends Controller
         $model->title = $request->title;
         $model->desc = $request->desc;
         $model->yt_link = $request->yt_link;
-
-        if ($img = $request->file('img')) {
+        if ($img = $request->file('hero')) {
             $imgName = time() . '.' . $img->getClientOriginalExtension();
             $img->move(public_path('files/banner'), $imgName);
 
