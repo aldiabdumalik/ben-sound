@@ -38,6 +38,7 @@ Route::group(['middleware' => 'website_config'], function (){
         Route::get('/action/{bln}/schedule.json', 'ajaxSchedule')->name('web.schedule');
         Route::get('/action/{schedule_id}/track.json', 'ajaxTracking')->name('web.track.action');
         Route::post('/action/send-message', 'sendMessage')->name('web.send_message');
+        Route::post('/action/send-riview', 'sendRiview')->name('web.send_riview');
     });
     Auth::routes();
     Route::group(['middleware' => ['role:admin|driver']], function () {
@@ -97,7 +98,9 @@ Route::group(['middleware' => 'website_config'], function (){
             Route::post('/company/message/dt', 'dt')->name('admin.company.message.dt');
         });
         Route::controller(WebReviewController::class)->group(function (){
-            Route::get('/company/review', 'index')->name('admin.company.review');
+            Route::get('/company/riview', 'index')->name('admin.company.review');
+            Route::post('/company/riview/dt', 'dt')->name('admin.company.review.dt');
+            Route::put('/company/riview/update/{id}', 'update')->name('admin.company.review.update');
         });
 
         Route::controller(UserController::class)->group(function (){

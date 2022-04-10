@@ -25,6 +25,14 @@
                     <input type="hidden" name="id" id="id" value="0">
                     <div class="form-row align-items-center">
                         <div class="col-12">
+                            <label for="email">Email Pelanggan</label>
+                            <input type="email" name="email" id="email" class="form-control mb-2" autocomplete="off" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="password">Password Pelanggan</label>
+                            <input type="text" name="password" id="password" class="form-control mb-2" autocomplete="off" required>
+                        </div>
+                        <div class="col-12">
                             <label for="location">Lokasi</label>
                             <input type="text" name="location" id="location" class="form-control mb-2" autocomplete="off" required>
                         </div>

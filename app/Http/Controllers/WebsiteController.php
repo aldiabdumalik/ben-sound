@@ -7,6 +7,7 @@ use App\Models\CompanyBanner;
 use App\Models\CompanyClient;
 use App\Models\Contact;
 use App\Models\ContactMessage;
+use App\Models\Review;
 use App\Models\Schedule;
 use App\Models\Track;
 use Illuminate\Http\Request;
@@ -33,9 +34,8 @@ class WebsiteController extends Controller
     public function indexReview()
     {
         $contact = Contact::all();
-        $schedules = Schedule::month(date('m'))->orderBy('schedule_start', 'DESC')->get();
-        $count = (empty($schedules)) ? 0 : count($schedules);
-        return view('website.review', compact('contact', 'schedules', 'count'));
+        $riview = Review::where('is_show', '1')->get();
+        return view('website.review', compact('contact', 'riview'));
     }
 
     public function ajaxSchedule($bln)
@@ -85,6 +85,37 @@ class WebsiteController extends Controller
         ]);
 
         return thisSuccess('Your message has been send!');
+    }
+
+    public function sendRiview(Request $request)
+    {
+        $request->validate([
+            'nilai' => 'required',
+            'message' => 'required',
+            'schedule' => 'required'
+        ]);
+
+        $check = Review::where('schedule_id', $request->schedule)->get();
+
+        if ($check->isNotEmpty()) {
+            return thisError('Riview untuk order ini sudah ada!');
+        }
+
+        $check = Schedule::where('email', auth()->user()->email)->where('id', $request->schedule)->get();
+
+        if ($check->isEmpty()) {
+            return thisError('Order ini bukan milik Anda!');
+        }
+
+        Review::create([
+            'schedule_id' => $request->schedule,
+            'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'nilai' => $request->nilai,
+            'message' => strip_tags($request->message),
+        ]);
+
+        return thisSuccess('Your riview has been send!');
     }
 
     static function scheduleWithLastTracking($month)

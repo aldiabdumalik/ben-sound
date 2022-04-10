@@ -803,8 +803,8 @@ hr {
 }
 
 .btn.btn_border {
-  color: #0E185F;
-  border: 1px solid #0E185F;
+  color: #fff;
+  border: 1px solid #fff;
 }
 .btn.btn_border:hover {
   color: #ffffff;
@@ -1598,7 +1598,7 @@ button {
   display: block;
   line-height: 1;
   font-size: 16px;
-  color: #051441;
+  color: #fff;
   font-family: "Sofia Pro Medium";
 }
 .header_section .main_menu > ul > li:hover > a, .header_section .main_menu > ul > li.active > a {
@@ -1646,7 +1646,7 @@ button {
 .sticky_header.stuck {
   position: fixed;
   min-height: 90px;
-  background-color: #ffffff;
+  background-color: #0E185F;
   box-shadow: 0px 0px 18px 1px rgba(0, 0, 0, 0.1);
   animation: 0.5s ease-in-out 0s normal none 1 running fadeInDown;
 }
@@ -1858,7 +1858,7 @@ button {
   font-size: 14px;
   padding: 50px 40px;
   overflow-y: scroll;
-  background-color: #ffffff;
+  background-color: #0E185F;
   transition: 0.6s cubic-bezier(1, 0, 0, 1);
 }
 .sidebar-menu-wrapper .mobile_menu.active {
@@ -2503,6 +2503,9 @@ button {
 ==================================================================================================== */
 /* 07 - partners section - start
 ==================================================================================================== */
+.partner_section {
+  background: #0E185F;
+}
 .partner_section .shape_1 {
   left: 0px;
   bottom: 0px;
@@ -2679,7 +2682,8 @@ button {
   height: 415px;
 }
 .testimonial_section .bg_area.bg_gradient_blue {
-  background-image: linear-gradient(30deg, #301cab 0%, #5774fa 100%);
+  /* background-image: linear-gradient(30deg, #301cab 0%, #5774fa 100%); */
+  background-image: linear-gradient(30deg, #0E185F 0%, #333C83 52%, #344CB7 100%);
 }
 .testimonial_section .bg_gradient_blue .owl-carousel .owl-nav .owl-next:before,
 .testimonial_section .bg_gradient_blue .owl-carousel .owl-nav .owl-prev:before {
@@ -3109,6 +3113,9 @@ button {
 /* feature section - start */
 .feature_section.bg_gradient_blue {
   background-image: linear-gradient(45deg, #301cab 0%, #4448d3 52%, #5774fa 100%);
+}
+.feature_section.bg_gradient_navy {
+  background-image: linear-gradient(45deg, #0E185F 0%, #333C83 52%, #344CB7 100%);
 }
 .feature_section.bg_gradient_blue_2 {
   background-image: linear-gradient(-45deg, #4218c4 0%, #686dfd 100%);
@@ -6963,10 +6970,13 @@ button {
 ==================================================================================================== */
 /* 24 - contact page - start
 ==================================================================================================== */
+.contact_section {
+  background: #0E185F;
+}
 .contact_section .contact_info {
   margin-bottom: 35px;
   padding-bottom: 35px;
-  border-bottom: 1px solid #eeebf6;
+  border-bottom: 1px solid #fff;
 }
 .contact_section .contact_info:last-child {
   border-bottom: none;
@@ -6976,14 +6986,21 @@ button {
 .contact_section .contact_info .list_title {
   font-size: 24px;
   margin-bottom: 25px;
+  color: #fff;
+}
+.contact_section .contact_info > ul li{
+  color: #fff;
 }
 .contact_section .contact_info > ul > li span {
   margin-right: 8px;
   display: inline-block;
-  color: #051441;
+  color: #fff;
 }
 .contact_section .contact_form .form_item textarea {
   min-height: 180px;
+}
+.bg_default_white{
+  background: #fff;
 }
 
 .map_section .google-map {
@@ -7179,6 +7196,7 @@ button {
 ======================================== */
 .banner_section {
   min-height: 100vh;
+  background: #0E185F;
 }
 .banner_section .banner_image {
   position: relative;
@@ -7204,6 +7222,7 @@ button {
 .banner_section .banner_content {
   z-index: 2;
   position: relative;
+  color: #fff;
 }
 .banner_section .banner_content .title_text {
   font-size: 60px;

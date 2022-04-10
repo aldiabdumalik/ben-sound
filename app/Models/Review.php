@@ -10,9 +10,12 @@ class Review extends Model
     use HasFactory;
 
     protected $fillable = [
+        'schedule_id',
+        'user_id',
         'name',
         'nilai',
         'subject',
-        'message'
+        'message',
+        'is_show',
     ];
 }

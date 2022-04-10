@@ -31,7 +31,7 @@
 
             <div class="col-lg-5 col-md-6 col-sm-8">
                 <div class="banner_content">
-                    <h1 class="title_text mb-30 text_effect_wrap clearfix">
+                    <h1 class="title_text text-white mb-30 text_effect_wrap clearfix">
                         <span class="text_effect text_effect_left">{{$banner->title}}</span>
                     </h1>
                     <p class="mb-50" data-aos="fade-up" data-aos-delay="200">{{$banner->desc}}</p>
