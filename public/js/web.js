@@ -152,7 +152,68 @@ $(document).ready(function () {
         });
     });
 
-    $("#add-review").click(function () {
-        $("#modal-review").modal("show");
+    // $('#add-review').click(function () {
+    //     $('#modal-review').modal('show')
+    // });
+
+    $(document).on("click", "#review_user", function () {
+        let schedule = $("#track-id").text().substring(6);
+        $("#modal-riview").modal("show");
+        $("#schedule_id").val(schedule);
+        $(".rating").starRating({
+            inputName: "rating",
+            showInfo: false,
+            starIconEmpty: "far fa-star",
+            starIconFull: "fas fa-star",
+            starColorEmpty: "lightgray",
+            starColorFull: "#FFC107",
+            starsSize: 5,
+            stars: 5,
+        });
+    });
+
+    $(document).on("submit", "#form-riview", function (e) {
+        e.preventDefault();
+        let data = {
+                schedule: $("#schedule_id").val(),
+                nilai: $("#rating_counter").val(),
+                message: $("#message").val(),
+            },
+            url = module.base_url + "action/send-riview",
+            method = "POST";
+
+        $.ajax({
+            url: url,
+            method: method,
+            dataType: "JSON",
+            cache: false,
+            data: data,
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            error: function (xhr, status, error) {
+                module.send_notif({
+                    icon: "error",
+                    message: xhr.responseJSON.message,
+                });
+                console.clear();
+            },
+            success: function (response) {
+                module.send_notif({
+                    icon: "success",
+                    message: response.message,
+                });
+                $("#modal-riview").modal("hide");
+                $("#modal-tracking").modal("hide");
+            },
+        });
+    });
+    $(document).on("change", ".rating", function (e, stars, index) {
+        $("#rating_counter").val(stars);
+    });
+    $("#modal-riview").on("hidden.bs.modal", function () {
+        $("#form-riview").trigger("reset");
+        $("#rating_counter").val(0);
+        $("#schedule_id").val(0);
     });
 });

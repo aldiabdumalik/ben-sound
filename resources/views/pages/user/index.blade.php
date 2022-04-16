@@ -45,6 +45,7 @@
                             <select name="role" id="role" class="form-control mb-2" required>
                                 <option value="admin">Admin</option>
                                 <option value="driver">Driver</option>
+                                <option value="user">User</option>
                             </select>
                         </div>
                         <div class="col-12 mb-2">

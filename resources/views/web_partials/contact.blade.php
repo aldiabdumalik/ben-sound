@@ -46,7 +46,7 @@
                             <textarea name="message" id="message" placeholder="Enter Your Message..." required></textarea>
                         </div>
 
-                        <button type="submit" class="btn bg_default_blue">Send Message</button>
+                        <button type="submit" class="btn btn_border">Send Message</button>
 
                     </form>
                 </div>

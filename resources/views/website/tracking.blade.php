@@ -72,50 +72,50 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <section id="cart_section" class="cart_section sec_ptb_120 bg_gray clearfix">
-        <div class="container">
-            <div class="table_wrap">
-                <table id="table-schedule" class="table m-0">
-                    <thead>
-                        <tr>
-                            <th>LOCATION</th>
-                            <th>DATE</th>
-                            <th>DATE END</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($schedules as $schedule)
-                        <tr>
-                            <td>
-                                <span class="td_title">LOCATION</span>
-                                <div class="product_item clearfix">
-                                    <div class="item_content">
-                                        <h4 class="item_title">{{$schedule->schedule_location}}</h4>
+        <section id="cart_section" class="cart_section sec_ptb_120 bg_gray clearfix">
+            <div class="container">
+                <div class="table_wrap">
+                    <table id="table-schedule" class="table m-0">
+                        <thead>
+                            <tr>
+                                <th>LOCATION</th>
+                                <th>DATE</th>
+                                <th>DATE END</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($schedules as $schedule)
+                            <tr>
+                                <td>
+                                    <span class="td_title">LOCATION</span>
+                                    <div class="product_item clearfix">
+                                        <div class="item_content">
+                                            <h4 class="item_title">{{$schedule->schedule_location}}</h4>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="td_title">DATE</span>
-                                <span class="item_price">{{ date('d/m/Y', strtotime($schedule->schedule_start)) }}</span>
-                            </td>
-                            <td>
-                                <span class="td_title">DATE END</span>
-                                <span class="item_availability">{{ date('d/m/Y', strtotime($schedule->schedule_end)) }}</span>
-                            </td>
-                            <td>
-                                <a href="javascript:void(0)" class="btn btn_border btn-tracking" data-id="{{ $schedule->id }}">TRACKING</a>
-                            </td>
-                        </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
+                                </td>
+                                <td>
+                                    <span class="td_title">DATE</span>
+                                    <span class="item_price">{{ date('d/m/Y', strtotime($schedule->schedule_start)) }}</span>
+                                </td>
+                                <td>
+                                    <span class="td_title">DATE END</span>
+                                    <span class="item_availability">{{ date('d/m/Y', strtotime($schedule->schedule_end)) }}</span>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" class="btn btn_border btn-tracking" data-id="{{ $schedule->id }}">TRACKING</a>
+                                </td>
+                            </tr>
+                            @endforeach
+    
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        </section>
     </section>
+
 
 </main>
 <div id="modal-tracking" class="modal fade" tabindex="-1" role="dialog">
@@ -129,6 +129,45 @@
             </div>
             <div class="modal-body">
                 <div class="wizard-steps mb-5" id="wizard-status"></div>
+                <div class="mt-5 float-right">
+                    @auth
+                        @role('user')
+                            <button type="button" id="review_user" class="btn btn-warning">Review</button>
+                        @endrole
+                    @else
+                        <a href="{{ route('login') }}" id="login_user" class="btn btn-warning">Login for Review</a>
+                    @endauth
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-riview" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Riview your order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form-riview" action="javascript:void(0)">
+                    <div class="form-group">
+                        <label for="start">Nilai</label>
+                        <div id="rating" class="rating"></div>
+                    </div>
+                    <input type="hidden" id="rating_counter" value="0">
+                    <input type="hidden" id="schedule_id" value="0">
+                    <div class="form-group">
+                        <label for="message">Deskripsikan pengalaman Anda</label>
+                        <textarea name="message" id="message" class="form-control" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-group float-right clearfix">
+                        <button type="submit" class="btn btn-warning">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

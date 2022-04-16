@@ -22,6 +22,7 @@ $(document).ready(function() {
         },
         columns: [
             { title: 'No.', data: 'DT_RowIndex', name: 'DT_RowIndex' },
+            { title: 'Email', data: 'email', name: 'email' },
             { title: 'Lokasi', data: 'schedule_location', name: 'schedule_location' },
             { title: 'Dari tanggal', data: 'schedule_start', name: 'schedule_start' },
             { title: 'Sampai', data: 'schedule_end', name: 'schedule_end' }
@@ -58,6 +59,7 @@ $(document).ready(function() {
                         date = `${start}${end}`;
 
                     $('#id').val(data.id);
+                    $('#email').val(data.email);
                     $('#location').val(data.schedule_location);
                     $('#date').val(date);
 
@@ -79,6 +81,8 @@ $(document).ready(function() {
             method = "GET",
             date = $('#date').val().split(' '),
             data = {
+                email: $('#email').val(),
+                password: $('#password').val(),
                 location: $('#location').val(),
                 start: date[0].split('/').reverse().join('-'),
                 end: date[2].split('/').reverse().join('-')

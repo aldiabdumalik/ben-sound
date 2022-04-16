@@ -85,6 +85,8 @@
     <!-- mobile menu - jquery include -->
     <script src="{{ asset('web/js/mCustomScrollbar.js') }}"></script>
 
+    <script src="{{ asset('web/js/jquery.star-rating.js') }}"></script>
+
     <!-- custom - jquery include -->
     <script src="{{ asset('web/js/custom.js') }}"></script>
     @stack('page-js')

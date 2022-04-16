@@ -50,7 +50,7 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
         ]);
         $user->assignRole($request->role);
 
@@ -70,7 +70,7 @@ class UserController extends Controller
 
         $model->name = $request->name;
         $model->email = $request->email;
-        $model->password = $request->password;
+        $model->password = bcrypt($request->password);
 
         $model->removeRole($roles[0]);
         $model->assignRole($request->role);

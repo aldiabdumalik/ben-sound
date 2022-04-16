@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Schedule;
 use App\Models\Track;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -33,6 +34,8 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
             'location' => 'required',
             'start' => 'required|date',
             'end' => 'required|date'
@@ -40,10 +43,29 @@ class ScheduleController extends Controller
 
         try {
             $model = Schedule::create([
+                'email' => $request->email,
                 'schedule_location' => $request->location,
                 'schedule_start' => $request->start,
                 'schedule_end' => $request->end,
             ]);
+
+            $user = User::where('email', $request->email)->first();
+
+            if ($user) {
+                $user->name = $request->location;
+                $user->email = $request->email;
+                $user->password = bcrypt($request->password);
+
+                $user->save();
+            }else{
+                $user = User::create([
+                    'name' => $request->location,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                ]);
+                $user->assignRole('user');
+            }
+
 
             Track::create([
                 'schedule_id' => $model->id,
@@ -60,6 +82,8 @@ class ScheduleController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
             'location' => 'required',
             'start' => 'required|date',
             'end' => 'required|date'
@@ -67,10 +91,18 @@ class ScheduleController extends Controller
 
         try {
             $model = Schedule::find($id);
+            $model->email = $request->email;
             $model->schedule_location = $request->location;
             $model->schedule_start = $request->start;
             $model->schedule_end = $request->end;
             $model->save();
+            
+            $user = User::where('email', $request->email)->first();
+            
+            $user->name = $request->location;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->save();
 
             return thisSuccess('Data updated successfully!');
         } catch (Exception $e) {

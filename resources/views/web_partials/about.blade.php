@@ -12,9 +12,9 @@
                     <i class="icon-avatar"></i>
                 </span>
                 <h2 class="title_text mb-30 text_effect_wrap">
-                    <span class="text_effect text_effect_left">About Us</span>
+                    <span class="text_effect text_effect_left text-white">About Us</span>
                 </h2>
-                <p class="mb-30" data-aos="fade-up" data-aos-delay="100">{!!  $about->about !!}</p>
+                <p class="mb-30 text-white" data-aos="fade-up" data-aos-delay="100">{!!  $about->about !!}</p>
             </div>
         </div>
     </div>
