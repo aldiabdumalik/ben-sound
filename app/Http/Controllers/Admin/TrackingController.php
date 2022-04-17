@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NotifyMail;
 use App\Models\Schedule;
 use App\Models\Track;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Yajra\DataTables\DataTables;
 
 class TrackingController extends Controller
@@ -48,6 +50,17 @@ class TrackingController extends Controller
                 'status' => $request->status,
                 'icon' => $request->icon,
             ]);
+
+            $schedule = Schedule::find($request->schedule);
+
+            $content = [
+                'email' => $schedule->email,
+                'password' => 'Cek email dari kami pertama kali atau hubungi admin untuk meminta password kembali',
+                'status' => $request->status
+            ];
+
+            Mail::to($schedule->email)->send(new NotifyMail($content));
+            
             return thisSuccess('Data saved successfully!', $request->schedule);
         } catch (Exception $e) {
             return thisError("Failed to save because : ". $e->getMessage());

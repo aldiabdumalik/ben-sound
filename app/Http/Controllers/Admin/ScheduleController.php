@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NotifyMail;
 use App\Models\Schedule;
 use App\Models\Track;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Yajra\DataTables\DataTables;
 
 class ScheduleController extends Controller
@@ -72,6 +74,14 @@ class ScheduleController extends Controller
                 'status' => 'On Schedule',
                 'icon' => 'fa-clipboard-list',
             ]);
+
+            $content = [
+                'email' => $request->email,
+                'password' => $request->password,
+                'status' => 'On Schedule'
+            ];
+
+            Mail::to($request->email)->send(new NotifyMail($content));
             
             return thisSuccess('Data saved successfully!');
         } catch (Exception $e) {
@@ -103,6 +113,18 @@ class ScheduleController extends Controller
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
             $user->save();
+
+            $track = Track::where('schedule_id', $id)
+                ->orderBy('created_at', 'DESC')
+                ->first();
+
+            $content = [
+                'email' => $request->email,
+                'password' => $request->password,
+                'status' => $track->status
+            ];
+
+            Mail::to($request->email)->send(new NotifyMail($content));
 
             return thisSuccess('Data updated successfully!');
         } catch (Exception $e) {
