@@ -74,6 +74,19 @@ class ScheduleController extends Controller
                 'icon' => 'fa-clipboard-list',
             ]);
 
+            $track = new Track;
+            $track->schedule_id = $model->id;
+            $track->status = 'On Schedule';
+            $track->icon = 'fa-clipboard-list';
+
+            if ($img = $request->file('image')) {
+                $imgName = time() . '.' . $img->getClientOriginalExtension();
+                $img->move(public_path('files/tracks'), $imgName);
+    
+                $track->image = $imgName;
+            }
+            $track->save();
+
             $content = [
                 'email' => $request->email,
                 'password' => $request->password,

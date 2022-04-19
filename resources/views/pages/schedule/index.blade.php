@@ -40,6 +40,13 @@
                             <label for="date">Tanggal</label>
                             <input type="text" name="date" id="date" class="form-control mb-2" autocomplete="off" required>
                         </div>
+                        <div class="col-12">
+                            <label for="image">Image (optional)</label>
+                            <div class="custom-file mb-2">
+                                <input type="file" class="custom-file-input" id="image" accept="image/*">
+                                <label id="image-text" class="custom-file-label" for="image">Choose file</label>
+                            </div>
+                        </div>
                         <div class="col-12 mb-2">
                             <button type="submit" id="submit" class="btn btn-primary btn-block">Save</button>
                         </div>
