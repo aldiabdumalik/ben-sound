@@ -33,6 +33,13 @@
                                 <div class="form-row align-items-center">
                                     <input type="hidden" name="id" id="id" value="0">
                                     <div class="col-12">
+                                        <label for="image">Image</label>
+                                        <div class="custom-file mb-2">
+                                            <input type="file" class="custom-file-input" id="image" accept="image/*">
+                                            <label id="image-text" class="custom-file-label" for="image">Choose file</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
                                         <label for="status">Status</label>
                                         <select name="status" id="status" class="form-control mb-2" required>
                                             <option value="">Select status</option>

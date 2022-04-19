@@ -45,11 +45,24 @@ class TrackingController extends Controller
         ]);
 
         try {
-            Track::create([
-                'schedule_id' => $request->schedule,
-                'status' => $request->status,
-                'icon' => $request->icon,
-            ]);
+            // Track::create([
+            //     'schedule_id' => $request->schedule,
+            //     'status' => $request->status,
+            //     'icon' => $request->icon,
+            // ]);
+
+            $track = new Track;
+            $track->schedule_id = $request->schedule;
+            $track->status = $request->status;
+            $track->icon = $request->icon;
+
+            if ($img = $request->file('image')) {
+                $imgName = time() . '.' . $img->getClientOriginalExtension();
+                $img->move(public_path('files/tracks'), $imgName);
+    
+                $track->image = $imgName;
+            }
+            $track->save();
 
             $schedule = Schedule::find($request->schedule);
 

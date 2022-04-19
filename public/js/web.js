@@ -144,6 +144,9 @@ $(document).ready(function () {
                             <div class="wizard-step-label">
                                 ${item.status}
                             </div>
+                            <div class="wizard-step-label">
+                                <a href="${module.base_url}files/tracks/${item.image}" target="_blank" class="text-white">Lihat Image</a>
+                            </div>
                         </div>
                         `);
                     });

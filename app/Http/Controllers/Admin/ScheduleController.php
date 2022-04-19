@@ -68,7 +68,6 @@ class ScheduleController extends Controller
                 $user->assignRole('user');
             }
 
-
             Track::create([
                 'schedule_id' => $model->id,
                 'status' => 'On Schedule',
