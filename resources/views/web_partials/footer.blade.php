@@ -48,8 +48,6 @@
                     <div class="widget useful_links ul_li_block">
                         <h3 class="widget_title mb-50">Social Media</h3>
                         <ul class="clearfix">
-                            <li><a href="https://{{ $comprof->facebook }}"><i class="icon-facebook"></i> Facebook</a></li>
-                            <li><a href="https://{{ $comprof->linkedin }}"><i class="icon-linkedin"></i> Linkedin</a></li>
                             <li><a href="https://{{ $comprof->youtube }}"><i class="fab fa-youtube"></i> Youtube</a></li>
                             <li><a href="https://{{ $comprof->instagram }}"><i class="fab fa-instagram"></i> Instagram</a></li>
                             <li><a href="https://wa.me/62{{ $comprof->whatsapp }}"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
@@ -91,5 +89,8 @@
             </div>
         </div>
     </div>
-
 </footer>
+
+<a href="https://wa.me/62{{ $comprof->whatsapp }}" class="float" target="_blank">
+    <i class="fab fa-whatsapp my-float"></i>
+</a>

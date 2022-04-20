@@ -29,7 +29,7 @@
                             <label for="addr">Address</label>
                             <textarea name="addr" id="addr" class="form-control mb-2" required cols="30" rows="10"></textarea>
                         </div>
-                        <div class="col-12 col-md-6">
+                        {{-- <div class="col-12 col-md-6">
                             <label for="fb">Facebook Link</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -37,7 +37,7 @@
                                 </div>
                                 <input type="text" name="fb" id="fb" class="form-control mb-2" autocomplete="off" placeholder="fb.com/profilemu">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-12 col-md-6">
                             <label for="ig">Instagram Link</label>
                             <div class="input-group mb-2">
@@ -56,7 +56,7 @@
                                 <input type="text" name="yt" id="yt" class="form-control mb-2" autocomplete="off" placeholder="youtube.com/p/profilemu">
                             </div>
                         </div>
-                        <div class="col-12 col-md-6">
+                        {{-- <div class="col-12 col-md-6">
                             <label for="linkedin">Linkedin</label>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
@@ -64,7 +64,7 @@
                                 </div>
                                 <input type="text" name="linkedin" id="linkedin" class="form-control mb-2" autocomplete="off" placeholder="linkedin.com/profilemu">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-12 col-md-12">
                             <label for="whatsapp">Whatsapp</label>
                             <div class="input-group mb-2">
