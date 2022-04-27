@@ -10,13 +10,11 @@
             </div>
         </div>
 
-        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="300">
+        <div class="multiplee">
             @foreach ($client as $cli)
-            <div class="partner_logo col-lg-2">
-                <a href="#{{ $cli->client_name }}">
-                    <img src="{{ asset('files/client/' . $cli->image) }}" alt="logo_not_found">
-                </a>
-            </div>    
+                <div class="client-item d-flex justify-content-center rounded-4">
+                    <img src="{{ asset('files/client/' . $cli->image) }}" alt="image_not_found">
+                </div>
             @endforeach
         </div>
     </div>

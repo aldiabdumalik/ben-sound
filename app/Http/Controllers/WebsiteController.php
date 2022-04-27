@@ -21,7 +21,9 @@ class WebsiteController extends Controller
         $about = CompanyAbout::find(1);
         $client = CompanyClient::all();
         $contact = Contact::all();
-        return view('website.home', compact('banner', 'about', 'client', 'contact'));
+        $banner_img = DB::table('banner_image')->orderByDesc('id')->get();
+        $riview = Review::latest()->get();
+        return view('website.home', compact('banner', 'about', 'client', 'contact','banner_img','riview'));
     }
 
     public function indexTracking()

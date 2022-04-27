@@ -3,14 +3,14 @@
         <div class="row justify-content-lg-between justify-content-md-center justify-content-sm-center">
 
             <div class="col-lg-3 col-md-8 col-sm-10">
-                <div class="contact_info ul_li_block" data-aos="fade-up" data-aos-delay="300">
+                <div class="contact_info ul_li_block" data-aos="fade-up" data-aos-delay="200">
                     <h3 class="list_title">Office Address</h3>
                     <ul class="clearfix">
                         <li>{{$comprof->address}}</li>
                     </ul>
                 </div>
 
-                <div class="contact_info ul_li_block" data-aos="fade-up" data-aos-delay="400">
+                <div class="contact_info ul_li_block" data-aos="fade-up" data-aos-delay="300">
                     <h3 class="list_title">Contact Info</h3>
                     <ul class="clearfix">
                         @foreach ($contact as $cont)
@@ -21,7 +21,7 @@
             </div>
 
             <div class="col-lg-8 col-md-8 col-sm-10">
-                <div class="contact_form" data-aos="fade-up" data-aos-delay="500">
+                <div class="contact_form" data-aos="fade-up" data-aos-delay="400">
                     <form action="javascript:void(0)" id="contact_form">
 
                         <div class="row">

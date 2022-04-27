@@ -31,6 +31,9 @@
 
     <link rel="stylesheet" href="{{ asset('admin/modules/jquery-toastr/jquery.toast.min.css') }}">
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}"/>
+
     <!-- custom - css include -->
     <link rel="stylesheet" type="text/css" href="{{ asset('web/css/style.css') }}">
     <style>
@@ -51,6 +54,38 @@
 
         .my-float{
             margin-top:16px;
+        }
+
+        .client-item {
+            width: 200px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            background: rgb(220, 220, 220);
+            margin: 0 1rem;
+            border-radius: 10px;
+        }
+        .client-item img{
+            /* position: static; */
+            position: static;
+            width: 150px;
+            height: auto;
+            /* height: auto;
+            max-width: 100%; */
+        }
+
+        .item {
+            transition: .4s ease all;
+            transform: scale(.6);
+        }
+        /* .item img{
+            display: block;
+            min-width: 100%;
+            width: auto;
+            height: auto;
+        } */
+        .review-slick {
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -109,6 +144,32 @@
 
     <!-- custom - jquery include -->
     <script src="{{ asset('web/js/custom.js') }}"></script>
+
     @stack('page-js')
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $('.multiplee').slick({
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 1000,
+            });
+            $('.review-slick').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+
+            $('.single-item').slick({
+                autoplay: false,
+                autoplaySpeed: 3000,
+                arrows: false
+            });
+        });
+    </script>
 </body>
 </html>

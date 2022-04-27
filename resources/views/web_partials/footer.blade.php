@@ -8,7 +8,7 @@
                     <div class="widget about_content">
                         <div class="brand_logo mb-50">
                             <a href="index.html" class="brand_link">
-                                <img src="{{ asset('web/images/logo/logo_1.png')}}" alt="logo_not_found">
+                                <img src="{{ asset('files/logo/'. $comprof->logo)}}" alt="logo_not_found">
                             </a>
                         </div>
                         <div class="contact_info ul_li_block mb-30">
@@ -26,10 +26,10 @@
                     <div class="widget useful_links ul_li_block">
                         <h3 class="widget_title mb-50">Company</h3>
                         <ul class="clearfix">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#our-client">Our Client</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="/#">Home</a></li>
+                            <li><a href="/#about">About</a></li>
+                            <li><a href="/#our-client">Our Client</a></li>
+                            <li><a href="/#contact">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -38,8 +38,8 @@
                     <div class="widget useful_links ul_li_block">
                         <h3 class="widget_title mb-50">Apps</h3>
                         <ul class="clearfix">
-                            <li><a href="#riview">Riview</a></li>
-                            <li><a href="#Tracking">Tracking</a></li>
+                            <li><a href="/review.html">Review</a></li>
+                            <li><a href="/tracking.html">Tracking</a></li>
                         </ul>
                     </div>
                 </div>

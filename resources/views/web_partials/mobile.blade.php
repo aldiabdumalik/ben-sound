@@ -31,8 +31,8 @@
         <div class="social_links ul_li mb-50">
             <h3 class="item_title text-white">Follow Us</h3>
             <ul class="clearfix">
-                <li><a href="https://{{ $comprof->facebook }}" class="text-white"><i class="icon-facebook"></i></a></li>
-                <li><a href="https://{{ $comprof->linkedin }}" class="text-white"><i class="icon-linkedin"></i></a></li>
+                {{-- <li><a href="https://{{ $comprof->facebook }}" class="text-white"><i class="icon-facebook"></i></a></li> --}}
+                {{-- <li><a href="https://{{ $comprof->linkedin }}" class="text-white"><i class="icon-linkedin"></i></a></li> --}}
                 <li><a href="https://{{ $comprof->youtube }}" class="text-white"><i class="fab fa-youtube"></i></a></li>
                 <li><a href="https://{{ $comprof->instagram }}" class="text-white"><i class="fab fa-instagram"></i></a></li>
             </ul>

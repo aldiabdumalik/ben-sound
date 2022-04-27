@@ -68,12 +68,6 @@ class ScheduleController extends Controller
                 $user->assignRole('user');
             }
 
-            Track::create([
-                'schedule_id' => $model->id,
-                'status' => 'On Schedule',
-                'icon' => 'fa-clipboard-list',
-            ]);
-
             $track = new Track;
             $track->schedule_id = $model->id;
             $track->status = 'On Schedule';

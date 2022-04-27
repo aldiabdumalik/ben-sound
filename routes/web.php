@@ -77,8 +77,13 @@ Route::group(['middleware' => 'website_config'], function (){
     
         Route::controller(WebBannerController::class)->group(function (){
             Route::get('/company/banner', 'index')->name('admin.company.banner');
+            Route::post('/company/banner/dt', 'dt')->name('admin.company.banner.dt');
             Route::get('/company/banner/detail', 'detail')->name('admin.company.banner.detail');
             Route::post('/company/banner/update', 'update')->name('admin.company.banner.update');
+            Route::get('/company/banner/{id}/detailimage', 'detailimage')->name('admin.company.banner.detailimage');
+            Route::post('/company/banner/save', 'store')->name('admin.company.banner.store');
+            Route::post('/company/banner/updateimage', 'updateimage')->name('admin.company.banner.updateimage');
+            Route::delete('/company/banner/{id}/delete', 'destroy')->name('admin.company.banner.destroy');
         });
         Route::controller(WebAboutController::class)->group(function (){
             Route::get('/company/about', 'index')->name('admin.company.about');
