@@ -43,9 +43,8 @@
                                         <label for="status">Status</label>
                                         <select name="status" id="status" class="form-control mb-2" required>
                                             <option value="">Select status</option>
-                                            <option value="Diperjalanan" data-icon="fa-truck">Diperjalanan</option>
                                             <option value="Terkirim" data-icon="fa-shipping-fast">Terkirim</option>
-                                            <option value="Order Selesai" data-icon="fa-clipboard-check">Order Selesai</option>
+                                            <option value="Item Sudah Siap Digunakan" data-icon="fa-clipboard-check">Item Sudah Siap Digunakan</option>
                                         </select>
                                     </div>
                                     <div class="col-12 mb-2">

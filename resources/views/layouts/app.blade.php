@@ -21,14 +21,14 @@
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/components.css') }}">
 </head>
-<body>
+<body style="background-color: #000d5c;">
     <div id="app">
         <section class="section">
           <div class="container mt-5">
             <div class="row">
                 <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                   <div class="login-brand">
-                    <img src="{{ asset('files/logo/'. $comprof->logo)}}" alt="logo" width="100" class="shadow-light">
+                    <img src="{{ asset('files/logo/'. $comprof->logo)}}" alt="logo" width="150">
                   </div>
       
                   <div class="card card-primary">
@@ -81,7 +81,7 @@
                       </form>
                     </div>
                   </div>
-                  <div class="simple-footer">
+                  <div class="simple-footer" style="color: #fff">
                     Copyright &copy; upducode
                   </div>
                 </div>

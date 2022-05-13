@@ -16,6 +16,8 @@
     
     @include('web_partials.client')
 
+    @include('web_partials.review')
+
     @include('web_partials.contact')
 
 </main>

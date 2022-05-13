@@ -155,6 +155,13 @@
             <div class="modal-body">
                 <form id="form-riview" action="javascript:void(0)">
                     <div class="form-group">
+                        <label for="start">Image</label>
+                        <div class="custom-file mb-2">
+                            <input type="file" class="custom-file-input" id="image" accept="image/*">
+                            <label id="image-text" class="custom-file-label" for="image">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="start">Nilai</label>
                         <div id="rating" class="rating"></div>
                     </div>

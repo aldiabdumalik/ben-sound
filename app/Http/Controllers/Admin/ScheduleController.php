@@ -70,7 +70,7 @@ class ScheduleController extends Controller
 
             $track = new Track;
             $track->schedule_id = $model->id;
-            $track->status = 'On Schedule';
+            $track->status = 'Terkirim';
             $track->icon = 'fa-clipboard-list';
 
             if ($img = $request->file('image')) {
@@ -84,7 +84,7 @@ class ScheduleController extends Controller
             $content = [
                 'email' => $request->email,
                 'password' => $request->password,
-                'status' => 'On Schedule'
+                'status' => 'Terkirim'
             ];
 
             Mail::to($request->email)->send(new NotifyMail($content));

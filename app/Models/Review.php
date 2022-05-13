@@ -17,5 +17,6 @@ class Review extends Model
         'subject',
         'message',
         'is_show',
+        'image',
     ];
 }

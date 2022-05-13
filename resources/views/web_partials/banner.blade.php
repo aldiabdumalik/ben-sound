@@ -6,19 +6,13 @@
             <div class="col-lg-7 col-md-7 col-sm-8 order-last">
                 <div class="banner_image scene">
                     <div class="big_image">
-                        <div class="single-item layer">
+                        <div class="single-item">
                             @foreach ($banner_img as $item)
                                 <div class="">
                                     <img src="{{ asset('files/banner/'. $item->image) }}" alt="{{ $item->image }}">
                                 </div>
                             @endforeach
                         </div>
-                        <!-- Set up your HTML -->
-                        {{-- <div class="owl-carousel" id="single_item_carousel">
-                            @foreach ($banner_img as $item)
-                                <div class="item"> <img src="{{ asset('files/banner/'. $item->image) }}" alt="{{ $item->image }}"> </div>
-                            @endforeach
-                        </div> --}}
                     </div>
                     <div class="leaf_1">
                         <div class="layer" data-depth="0.2">

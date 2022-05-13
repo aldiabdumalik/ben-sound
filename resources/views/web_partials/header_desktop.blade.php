@@ -6,7 +6,7 @@
                 <div class="brand_logo">
                     <a href="{{ route('web') }}" class="brand_link">
                         <img src="{{ asset('files/logo/'.$comprof->logo) }}" alt="logo_not_found">
-                        <img src="{{ asset('files/logo/'.$comprof->logo) }}" alt="logo_not_found">
+                        {{-- <img src="{{ asset('files/logo/'.$comprof->logo) }}" alt="logo_not_found"> --}}
                     </a>
                     <button type="button" class="menu_btn">
                         <i class="fal fa-bars"></i>

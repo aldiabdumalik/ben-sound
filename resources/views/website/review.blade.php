@@ -24,12 +24,12 @@
                                         @endfor
                                     </ul>
                                 </div>
-                                <div class="thumbnail_image">
-                                    <img src="{{asset('admin/img/avatar/avatar-1.png') }}" alt="image_not_found">
+                                <div class="thumbnail_image" style="border-radius: 0!important;sty">
+                                    <a href="{{ $item->image == null ? asset('admin/img/avatar/avatar-1.png') : asset('files/review/'.$item->image) }}" target="_blank"><img src="{{ $item->image == null ? asset('admin/img/avatar/avatar-1.png') : asset('files/review/'.$item->image) }}" alt="image_not_found"></a>
                                 </div>
                                 <div class="admin_content">
                                     <h3 class="admin_name">{{ $item->name }}</h3>
-                                    <span class="admin_title">Client</span>
+                                    <span class="admin_title">Pelanggan</span>
                                 </div>
                             </div>
                             <p class="mb-0">

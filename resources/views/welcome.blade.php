@@ -73,19 +73,32 @@
             /* height: auto;
             max-width: 100%; */
         }
-
-        .item {
-            transition: .4s ease all;
-            transform: scale(.6);
+        .review-home-item {
+            width: 200px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            background: rgb(241, 241, 241);
+            margin: 0 1rem;
+            border-radius: 10px;
         }
-        /* .item img{
-            display: block;
-            min-width: 100%;
-            width: auto;
-            height: auto;
-        } */
+        .review-home-item p{
+            margin-bottom: 0;
+        }
+
         .review-slick {
             margin-top: 10px;
+        }
+        .single-item {
+            width:600px;
+            margin:auto auto;
+        }
+
+        @media (max-width:320px)  {
+            .single-item {
+                width:285px;
+                margin:auto auto;
+            }
         }
     </style>
 </head>
@@ -99,11 +112,10 @@
                 <i class="fal fa-arrow-up"></i>
             </a>
         </div> --}}
-
         @include('web_partials.header_desktop')
         @include('web_partials.mobile')
 
-        @yield('content')
+    @yield('content')
 
         @include('web_partials.footer')
     </div>
@@ -156,6 +168,62 @@
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 1000,
+                responsive: [
+                    {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                        }
+                    },
+                    {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                        }
+                    },
+                    {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+            $('.review-home').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 1000,
+                responsive: [
+                    {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                        }
+                    },
+                    {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                        }
+                    },
+                    {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                        }
+                    }
+                ]
             });
             $('.review-slick').slick({
                 slidesToShow: 3,
@@ -166,7 +234,7 @@
 
             $('.single-item').slick({
                 autoplay: false,
-                autoplaySpeed: 3000,
+                autoplaySpeed: 2000,
                 arrows: false
             });
         });

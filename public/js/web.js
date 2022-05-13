@@ -175,22 +175,41 @@ $(document).ready(function () {
         });
     });
 
+    $("#image").on("change", function (e) {
+        e.preventDefault();
+        var fileName = $(this).val().replace("C:\\fakepath\\", " ");
+        var ext = fileName.lastIndexOf(".") + 1;
+        var extFile = fileName.substr(ext, fileName.length).toLowerCase();
+        if (!fileName) {
+            fileName = "Choose file";
+        }
+        if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+            $(this).next("#image-text").html(fileName);
+        } else {
+            $(this).next("#image-text").html("Choose file");
+            $(this).val(null);
+        }
+    });
+
     $(document).on("submit", "#form-riview", function (e) {
         e.preventDefault();
-        let data = {
-                schedule: $("#schedule_id").val(),
-                nilai: $("#rating_counter").val(),
-                message: $("#message").val(),
-            },
+        let formData = new FormData(),
             url = module.base_url + "action/send-riview",
             method = "POST";
-
+        if ($("#image")[0].files.length > 0) {
+            formData.append("image", $("#image")[0].files[0]);
+        }
+        formData.append("schedule", $("#schedule_id").val());
+        formData.append("nilai", $("#rating_counter").val());
+        formData.append("message", $("#message").val());
         $.ajax({
             url: url,
             method: method,
-            dataType: "JSON",
             cache: false,
-            data: data,
+            data: formData,
+            dataType: false,
+            contentType: false,
+            processData: false,
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },

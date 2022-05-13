@@ -109,13 +109,28 @@ class WebsiteController extends Controller
             return thisError('Order ini bukan milik Anda!');
         }
 
-        Review::create([
-            'schedule_id' => $request->schedule,
-            'user_id' => auth()->user()->id,
-            'name' => auth()->user()->name,
-            'nilai' => $request->nilai,
-            'message' => strip_tags($request->message),
-        ]);
+        $review = new Review;
+        $review->schedule_id = $request->schedule;
+        $review->user_id = auth()->user()->id;
+        $review->name = auth()->user()->name;
+        $review->nilai = $request->nilai;
+        $review->message = strip_tags($request->message);
+        
+        if ($img = $request->file('image')) {
+            $imgName = time() . '.' . $img->getClientOriginalExtension();
+            $img->move(public_path('files/review'), $imgName);
+            $review->image = $imgName;
+        }
+
+        $review->save();
+
+        // Review::create([
+        //     'schedule_id' => $request->schedule,
+        //     'user_id' => auth()->user()->id,
+        //     'name' => auth()->user()->name,
+        //     'nilai' => $request->nilai,
+        //     'message' => strip_tags($request->message),
+        // ]);
 
         return thisSuccess('Your riview has been send!');
     }
