@@ -112,9 +112,9 @@
                 margin:auto auto;
             }
         }
-        @media (min-width:1440px)  {
+        @media (min-width:1366px)  {
             .single-item {
-                width:600px;
+                width:700px;
                 margin:auto auto;
             }
         }
