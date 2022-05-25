@@ -47,9 +47,9 @@
             color:#FFF;
             border-radius:50px;
             text-align:center;
-        font-size:30px;
+            font-size:30px;
             box-shadow: 2px 2px 3px #999;
-        z-index:100;
+            z-index:100;
         }
 
         .my-float{
@@ -83,7 +83,7 @@
             border-radius: 10px;
         }
         .review-home-item p{
-            margin-bottom: 0;
+        margin-bottom: 0;
         }
 
         .review-slick {
@@ -94,9 +94,27 @@
             margin:auto auto;
         }
 
-        @media (max-width:320px)  {
+        @media (min-width:320px)  {
             .single-item {
-                width:285px;
+                width:290px;
+                margin:auto auto;
+            }
+        }
+        @media (min-width:425px)  {
+            .single-item {
+                width:350px;
+                margin:auto auto;
+            }
+        }
+        @media (min-width:768px)  {
+            .single-item {
+                width:450px;
+                margin:auto auto;
+            }
+        }
+        @media (min-width:1440px)  {
+            .single-item {
+                width:600px;
                 margin:auto auto;
             }
         }
