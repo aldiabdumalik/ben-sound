@@ -74,7 +74,7 @@
 <table border="0" cellpadding="0" cellspacing="0" class="heading_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
 <tr>
 <td style="width:100%;text-align:center;">
-<h1 style="margin: 0; color: #ffffff; font-size: 23px; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; line-height: 200%; text-align: center; direction: ltr; font-weight: 700; letter-spacing: 3px; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">Bend & Sound Production</span></h1>
+<h1 style="margin: 0; color: #ffffff; font-size: 23px; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; line-height: 200%; text-align: center; direction: ltr; font-weight: 700; letter-spacing: 3px; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">Ben Sound & Production</span></h1>
 </td>
 </tr>
 </table>

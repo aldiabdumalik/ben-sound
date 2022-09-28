@@ -84,7 +84,7 @@ class ScheduleController extends Controller
             $content = [
                 'email' => $request->email,
                 'password' => $request->password,
-                'status' => 'Terkirim'
+                'status' => 'Terjadwal'
             ];
 
             Mail::to($request->email)->send(new NotifyMail($content));
