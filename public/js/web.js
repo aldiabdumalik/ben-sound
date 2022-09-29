@@ -199,9 +199,10 @@ $(document).ready(function () {
         if ($("#image")[0].files.length > 0) {
             formData.append("image", $("#image")[0].files[0]);
         }
-        formData.append("schedule", $("#schedule_id").val());
+        formData.append("name", $("#name").val());
         formData.append("nilai", $("#rating_counter").val());
         formData.append("message", $("#message").val());
+        console.log(formData);
         $.ajax({
             url: url,
             method: method,
@@ -225,8 +226,9 @@ $(document).ready(function () {
                     icon: "success",
                     message: response.message,
                 });
-                $("#modal-riview").modal("hide");
-                $("#modal-tracking").modal("hide");
+                setTimeout(() => {
+                    window.location = "/";
+                }, 2000);
             },
         });
     });
@@ -237,5 +239,52 @@ $(document).ready(function () {
         $("#form-riview").trigger("reset");
         $("#rating_counter").val(0);
         $("#schedule_id").val(0);
+    });
+
+    /* 1. Visualizing things on Hover - See next part for action on click */
+    $("#stars li")
+        .on("mouseover", function () {
+            var onStar = parseInt($(this).data("value"), 10); // The star currently mouse on
+
+            // Now highlight all the stars that's not after the current hovered star
+            $(this)
+                .parent()
+                .children("li.star")
+                .each(function (e) {
+                    if (e < onStar) {
+                        $(this).addClass("hover");
+                    } else {
+                        $(this).removeClass("hover");
+                    }
+                });
+        })
+        .on("mouseout", function () {
+            $(this)
+                .parent()
+                .children("li.star")
+                .each(function (e) {
+                    $(this).removeClass("hover");
+                });
+        });
+
+    /* 2. Action to perform on click */
+    $("#stars li").on("click", function () {
+        var onStar = parseInt($(this).data("value"), 10); // The star currently selected
+        var stars = $(this).parent().children("li.star");
+
+        for (var i = 0; i < stars.length; i++) {
+            $(stars[i]).removeClass("selected");
+        }
+
+        for (var i = 0; i < onStar; i++) {
+            $(stars[i]).addClass("selected");
+        }
+
+        // JUST RESPONSE (Not needed)
+        var ratingValue = parseInt(
+            $("#stars li.selected").last().data("value"),
+            10
+        );
+        $("#rating_counter").val(ratingValue);
     });
 });

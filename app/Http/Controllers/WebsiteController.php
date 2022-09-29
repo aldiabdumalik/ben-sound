@@ -92,27 +92,27 @@ class WebsiteController extends Controller
     public function sendRiview(Request $request)
     {
         $request->validate([
+            'name' => 'required',
             'nilai' => 'required',
             'message' => 'required',
-            'schedule' => 'required'
         ]);
 
-        $check = Review::where('schedule_id', $request->schedule)->get();
+        // $check = Review::where('schedule_id', $request->schedule)->get();
 
-        if ($check->isNotEmpty()) {
-            return thisError('Riview untuk order ini sudah ada!');
-        }
+        // if ($check->isNotEmpty()) {
+        //     return thisError('Riview untuk order ini sudah ada!');
+        // }
 
-        $check = Schedule::where('email', auth()->user()->email)->where('id', $request->schedule)->get();
+        // $check = Schedule::where('email', auth()->user()->email)->where('id', $request->schedule)->get();
 
-        if ($check->isEmpty()) {
-            return thisError('Order ini bukan milik Anda!');
-        }
+        // if ($check->isEmpty()) {
+        //     return thisError('Order ini bukan milik Anda!');
+        // }
 
         $review = new Review;
-        $review->schedule_id = $request->schedule;
-        $review->user_id = auth()->user()->id;
-        $review->name = auth()->user()->name;
+        // $review->schedule_id = $request->schedule;
+        // $review->user_id = auth()->user()->id;
+        $review->name = $request->name;
         $review->nilai = $request->nilai;
         $review->message = strip_tags($request->message);
         

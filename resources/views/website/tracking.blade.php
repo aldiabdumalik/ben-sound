@@ -78,6 +78,7 @@
                     <table id="table-schedule" class="table m-0">
                         <thead>
                             <tr>
+                                <th>TRACKING ID</th>
                                 <th>LOCATION</th>
                                 <th>DATE</th>
                                 <th>DATE END</th>
@@ -87,6 +88,10 @@
                         <tbody>
                             @foreach ($schedules as $schedule)
                             <tr>
+                                <td>
+                                    <span class="td_title">TRACKING</span>
+                                    <span class="tracking_id">TRCK00{{ $schedule->id }}</span>
+                                </td>
                                 <td>
                                     <span class="td_title">LOCATION</span>
                                     <div class="product_item clearfix">
@@ -130,13 +135,13 @@
             <div class="modal-body">
                 <div class="wizard-steps mb-5" id="wizard-status"></div>
                 <div class="mt-5 float-right">
-                    @auth
+                    {{-- @auth
                         @role('user')
                             <button type="button" id="review_user" class="btn btn-warning">Review</button>
                         @endrole
                     @else
                         <a href="{{ route('login') }}" id="login_user" class="btn btn-warning">Login for Review</a>
-                    @endauth
+                    @endauth --}}
                 </div>
             </div>
         </div>
