@@ -52,7 +52,7 @@
                                   </li>
                                 </ul>
                               </div>
-                              <input type="text" id="rating_counter" value="0">
+                              <input type="hidden" id="rating_counter" value="0">
                         </div>
                         
                         <div class="form_item">
