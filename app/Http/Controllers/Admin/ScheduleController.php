@@ -70,7 +70,7 @@ class ScheduleController extends Controller
 
             $track = new Track;
             $track->schedule_id = $model->id;
-            $track->status = 'Terkirim';
+            $track->status = 'Terjadwal';
             $track->icon = 'fa-clipboard-list';
 
             if ($img = $request->file('image')) {

@@ -202,7 +202,7 @@ $(document).ready(function () {
         formData.append("name", $("#name").val());
         formData.append("nilai", $("#rating_counter").val());
         formData.append("message", $("#message").val());
-        console.log(formData);
+
         $.ajax({
             url: url,
             method: method,
